@@ -1,0 +1,59 @@
+================================================================================
+               HR POLICY AGENT — COMPLETE SPECIFICATION
+================================================================================
+Course   : 24CSEN4121 - Building Agentic AI Systems
+Faculty  : Dr. Srikanth Thota
+Project  : AI-Powered HR Policy Agent (100% Local / Zero API Keys)
+Engine   : Ollama + LlamaIndex + LangChain (Offline RAG)
+================================================================================
+
+FILES
+-----
+hr_agent/
+  indexing.py    - Builds vector index from policy.txt into storage/
+  agent.py       - Core 4-step workflow (Retrieve → Check → Answer/Escalate)
+  web.py         - Web server on Port 8050
+  evaluation.py  - Scenario metrics calculator (Scenarios 1-6)
+  run.bat        - One-click launcher (starts Ollama + web server)
+  policy.txt     - Official HR policy document (ground truth)
+  storage/       - Persisted LlamaIndex vector store
+  static/        - Frontend (index.html, style.css, app.js)
+
+HOW TO RUN
+----------
+1. Start Ollama:    ollama serve
+2. Pull models:     ollama pull qwen2.5 && ollama pull nomic-embed-text
+3. Build index:     python indexing.py
+4. Test agent:      python agent.py
+5. Run Web Portal:  python web.py   (opens http://127.0.0.1:8050)
+6. Run Evaluation:  python evaluation.py
+   Or just double-click: run.bat
+
+ARCHITECTURE (4-Step Workflow)
+------------------------------
+  Employee Query
+       ↓
+  STEP 1: RETRIEVE  → Semantic search (nomic-embed-text, Top-2 chunks)
+       ↓
+  STEP 2: CHECK     → LLM triaging (ROUTINE vs ESCALATE)
+       ↓
+  STEP 3: ANSWER    → Grounded response via ChatOllama (qwen2.5)
+       or
+  STEP 4: ESCALATE  → Route to HR Specialist with ticket
+
+POLICY COVERAGE
+---------------
+  Section 1: Annual Leave     - 20 days/year, 2-week notice, 5-day carryover
+  Section 2: Parental Leave   - 12 weeks paid, 4-week advance notice
+  Section 3: Sick Leave       - 10 days/year, doctor's note after 3 days
+  Section 4: Benefits         - Eligible after 30 days, health + retirement + life
+
+EVALUATION METRICS (Scenarios 1-6)
+-----------------------------------
+  S1: Success Rate         = 92.0% (184/200)
+  S2: Target               = 95.0% (need +6 more)
+  S3: Hallucination Rate   = 3.2% (8/250 claims)
+  S4: Cost                 = $3.00 commercial vs $0.00 local
+  S5: 4-Step Reliability   = 81.5% (0.95^4)
+  S6: Action               = Reduce hallucination below 2% limit
+================================================================================

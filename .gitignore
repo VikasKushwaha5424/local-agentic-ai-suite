@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and environments
+.env
+.venv
+env/
+venv/
+ENV/
+*.log
+
+# OS / IDE files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Storage / Vector store caches if needed (optional - can keep or ignore, usually local vector stores can be re-indexed or kept if lightweight)
+# hr_agent/storage/
+# student_helpdesk/storage/

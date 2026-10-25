@@ -1,0 +1,53 @@
+================================================================================
+               STUDENT HELPDESK — COMPLETE SPECIFICATION
+================================================================================
+Course   : 24CSEN4121 - Building Agentic AI Systems
+Faculty  : Dr. Srikanth Thota
+Project  : AI-Based University Student Helpdesk (100% Local / Zero API Keys)
+Engine   : Ollama + LlamaIndex + LangChain (Offline RAG)
+================================================================================
+
+FILES
+-----
+student_helpdesk/
+  indexing.py    - Builds vector index from data/ folder into storage/
+  cli.py         - Interactive terminal chatbot
+  web.py         - Web server on Port 8000
+  evaluation.py  - Automated test suite (4 test cases)
+  run.bat        - One-click launcher (starts Ollama + web server)
+  data/          - Source documents (rules.txt, faqs.txt, handbook.txt)
+  storage/       - Persisted LlamaIndex vector store
+  static/        - Frontend (index.html, style.css, app.js)
+
+HOW TO RUN
+----------
+1. Start Ollama:    ollama serve
+2. Pull models:     ollama pull qwen2.5 && ollama pull nomic-embed-text
+3. Build index:     python indexing.py
+4. Run CLI:         python cli.py
+5. Run Web Portal:  python web.py   (opens http://127.0.0.1:8000)
+6. Run Tests:       python evaluation.py
+   Or just double-click: run.bat
+
+ARCHITECTURE
+------------
+  Student Query → LlamaIndex Retriever (nomic-embed-text)
+       → Top-3 context chunks
+       → LangChain ChatOllama (qwen2.5) + System Prompt
+       → Grounded answer with source citations
+
+KNOWLEDGE BASE
+--------------
+  rules.txt   : Attendance (75% min), Grading (O to F), Bonafide/TC procedures,
+                 Library timings, Exam registration checklist
+  faqs.txt    : Detailed FAQ for certificates, fee receipts, campus facilities
+  handbook.txt: Academic policies, CGPA calculation, course registration rules
+
+EVALUATION RESULTS
+------------------
+  Test 1: Bonafide certificate procedure     → PASS
+  Test 2: Library timings & borrowing rules   → PASS
+  Test 3: Attendance policy (65% debarment)  → PASS
+  Test 4: Grading system & CGPA requirement  → PASS
+  Overall: 4/4 (100% keyword match accuracy)
+================================================================================

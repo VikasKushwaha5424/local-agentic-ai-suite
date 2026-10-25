@@ -1,0 +1,21 @@
+# =============================================================================
+# Requirements — Agentic AI Lab Project (100% Local Ollama Setup)
+# Course: 24CSEN4121 — Building Agentic AI Systems
+# =============================================================================
+
+# --- LlamaIndex Core ---
+llama-index-core>=0.14.0
+llama-index-readers-file>=0.2.0
+
+# --- LlamaIndex Ollama Integration ---
+llama-index-llms-ollama>=0.11.0
+llama-index-embeddings-ollama>=0.10.0
+
+# --- LangChain ---
+langchain>=1.0.0
+langchain-core>=1.0.0
+langchain-ollama>=1.0.0
+
+# --- Web Server ---
+starlette>=0.40.0
+uvicorn>=0.30.0

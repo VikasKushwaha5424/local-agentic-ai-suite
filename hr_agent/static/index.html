@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise HR Policy Agent | Employee PeopleOps Portal</title>
+  <meta name="description" content="AI-Powered Enterprise HR Policy Assistant with intelligent triaging, verified policy retrieval, and automated HR specialist escalation.">
+  
+  <!-- Modern Clean Typography: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Minimalist Top Navigation -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">PeopleOps AI</span>
+            <span class="brand-tag">HR Policy Agent</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Backend Status Pill -->
+          <div id="system-status-badge" class="status-pill status-checking" title="Checking local engine status">
+            <span class="status-dot"></span>
+            <span id="status-text" class="status-text">Connecting...</span>
+          </div>
+
+          <!-- Evaluation Metrics Modal Trigger -->
+          <button id="metrics-btn" class="icon-pill-btn" title="View Evaluated Performance Metrics & Practical Scenarios">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Metrics</span>
+          </button>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg id="theme-icon-sun" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="theme-icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- New Chat / Clear Button -->
+          <button id="clear-chat-btn" class="new-chat-btn" title="Start a fresh HR inquiry session">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>New Inquiry</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Chat Content -->
+    <main class="chat-viewport">
+      <div class="chat-thread" id="chat-thread">
+        
+        <!-- Minimal Welcome View -->
+        <div class="welcome-container" id="welcome-banner">
+          <div class="welcome-badge">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>Enterprise Employee Relations & HR Policy Portal</span>
+          </div>
+
+          <h1 class="welcome-heading">How can PeopleOps assist you?</h1>
+          <p class="welcome-subtext">Ask verified questions regarding annual leave, parental leave, sick leave policies, medical notes, and health insurance eligibility.</p>
+
+          <!-- Clean Prompt Suggestions -->
+          <div class="suggestions-grid">
+            <button class="suggestion-card prompt-chip" data-query="How many days of annual leave are available and what is the notice period?">
+              <span class="card-title">🌴 Annual Leave Allowance</span>
+              <span class="card-desc">20 days/year, accrual rules, and 2-week notice</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="What is the parental leave duration and what proof is required?">
+              <span class="card-title">👶 Parental Leave Guidelines</span>
+              <span class="card-desc">12 weeks fully paid, birth certificate or adoption documentation</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="Is medical documentation required for sick leave?">
+              <span class="card-title">🩺 Sick Leave & Doctor's Note</span>
+              <span class="card-desc">10-day allowance and mandatory certificate after 3 days</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="When do full-time employees become eligible for health insurance and 401(k) matching?">
+              <span class="card-title">🏥 Benefits & Retirement Eligibility</span>
+              <span class="card-desc">30-day continuous service waiting period & enrollment</span>
+            </button>
+            <button class="suggestion-card prompt-chip escalation-card" data-query="Can I apply for an extended unpaid sabbatical for personal reasons?">
+              <span class="card-title">⚡ Unpaid Sabbatical Request</span>
+              <span class="card-desc">Tests Escalation: Routes to Human HR Specialist</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="How many days of unused annual leave can I carry over into next year?">
+              <span class="card-title">🗓️ Leave Carryover Policy</span>
+              <span class="card-desc">Maximum 5 days rollover into Q1 (by March 31)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Message Stream -->
+        <div id="messages-stream" class="messages-stream"></div>
+
+        <!-- Minimal Loading State -->
+        <div id="typing-indicator" class="typing-indicator hidden" aria-live="polite">
+          <div class="typing-bubble">
+            <div class="typing-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="typing-label">Checking policy rules & formulating answer...</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Floating Minimalist Input Area -->
+    <div class="input-area-wrapper">
+      <div class="input-container">
+        <form id="chat-form" class="input-box">
+          <textarea
+            id="user-input"
+            rows="1"
+            placeholder="Ask about annual leave, parental leave, sick notes, or employee benefits..."
+            aria-label="HR Inquiry Input"
+            required
+          ></textarea>
+          
+          <button type="submit" id="send-btn" class="send-btn" title="Send (Enter)" aria-label="Send">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <div class="input-footnote">
+          <span>Enterprise HR Policy Agent • 100% Local AI (Ollama qwen2.5) • Zero Cloud API Costs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Performance Metrics Modal (Simplified & Clear) -->
+  <div id="metrics-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>System Performance Dashboard</h3>
+          <p>Key results from the HR Agent Case Study (Dr. Srikanth Thota)</p>
+        </div>
+        <button id="close-modal-btn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      
+      <div class="modal-body" id="metrics-modal-body">
+        
+        <!-- Section 1: Core Performance -->
+        <div class="modal-section-title">Core Performance (At a Glance)</div>
+        <div class="metrics-grid">
+          <!-- Card 1 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">92%</span>
+              <span class="metric-badge badge-green">Passed</span>
+            </div>
+            <span class="metric-title">Success Rate</span>
+            <span class="metric-desc">184 out of 200 employee questions answered correctly.</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">+6</span>
+              <span class="metric-badge badge-blue">Goal: 95%</span>
+            </div>
+            <span class="metric-title">Target Goal</span>
+            <span class="metric-desc">Only 6 more correct answers needed out of 200 to hit 95%.</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">96.8%</span>
+              <span class="metric-badge badge-amber">Needs Work</span>
+            </div>
+            <span class="metric-title">Factual Accuracy</span>
+            <span class="metric-desc">3.2% error rate (target is under 2.0% maximum).</span>
+          </div>
+        </div>
+
+        <!-- Section 2: Economics & Reliability -->
+        <div class="modal-section-title">Cost & Pipeline Reliability</div>
+        <div class="metrics-grid">
+          <!-- Card 4 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">$0.00</span>
+              <span class="metric-badge badge-green">100% Free</span>
+            </div>
+            <span class="metric-title">Cost per Query</span>
+            <span class="metric-desc">Runs free on local GPU. Cloud API would cost ~$3.00/query.</span>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">81.5%</span>
+              <span class="metric-badge badge-neutral">Compounding</span>
+            </div>
+            <span class="metric-title">4-Step Chained Reliability</span>
+            <span class="metric-desc">When 4 AI steps run sequentially at 95% each: 0.95⁴ = 81.5%.</span>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="metric-box">
+            <div class="metric-box-top">
+              <span class="metric-num">10 max</span>
+              <span class="metric-badge badge-blue">Audit Limit</span>
+            </div>
+            <span class="metric-title">Allowed Errors</span>
+            <span class="metric-desc">At a 2% tolerance limit across 500 checked claims.</span>
+          </div>
+        </div>
+
+        <!-- Section 3: Continuous Evaluation Cycle -->
+        <div class="modal-section">
+          <div class="modal-section-title">Continuous Improvement Cycle</div>
+          <div class="cycle-pill-bar">
+            <div class="cycle-step"><span class="step-num">1</span> Evaluate</div>
+            <span class="cycle-arrow">➔</span>
+            <div class="cycle-step"><span class="step-num">2</span> Deploy</div>
+            <span class="cycle-arrow">➔</span>
+            <div class="cycle-step"><span class="step-num">3</span> Monitor</div>
+            <span class="cycle-arrow">➔</span>
+            <div class="cycle-step"><span class="step-num">4</span> Improve</div>
+            <span class="cycle-arrow">➔</span>
+            <div class="cycle-step"><span class="step-num">5</span> Re-test</div>
+          </div>
+          <div class="cycle-takeaway">
+            💡 <strong>Takeaway:</strong> Always evaluate AI accuracy, monitor employee feedback, and improve prompt guardrails before scaling to more users.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Helpdesk | Local AI Portal</title>
+  <meta name="description" content="Minimalist, offline AI Student Helpdesk powered by local Ollama & LlamaIndex. Fast, verified answers from official university handbooks.">
+  
+  <!-- Modern Clean Typography: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Minimalist Top Navigation -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">CampusDesk</span>
+            <span class="brand-tag">Offline RAG</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Backend Status Pill -->
+          <div id="system-status-badge" class="status-pill status-checking" title="Checking local engine status">
+            <span class="status-dot"></span>
+            <span id="status-text" class="status-text">Connecting...</span>
+          </div>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg id="theme-icon-sun" class="hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="theme-icon-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- New Chat / Clear Button -->
+          <button id="clear-chat-btn" class="new-chat-btn" title="Start a fresh conversation">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>New Chat</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Chat Content -->
+    <main class="chat-viewport">
+      <div class="chat-thread" id="chat-thread">
+        
+        <!-- Minimal Welcome View -->
+        <div class="welcome-container" id="welcome-banner">
+          <div class="welcome-badge">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <span>University Academic & Administrative Helpdesk</span>
+          </div>
+
+          <h1 class="welcome-heading">How can I help you today?</h1>
+          <p class="welcome-subtext">Ask any question regarding campus rules, attendance requirements, certificates, schedules, and official university policies.</p>
+
+          <!-- Clean Prompt Suggestions -->
+          <div class="suggestions-grid">
+            <button class="suggestion-card prompt-chip" data-query="What is the procedure for applying for a bonafide certificate?">
+              <span class="card-title">Bonafide Certificate</span>
+              <span class="card-desc">Application process, fee, and issuance room</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="What are the library timings and borrowing rules?">
+              <span class="card-title">Library Hours & Borrowing</span>
+              <span class="card-desc">Working hours, book limits, and renewals</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="What attendance percentage is required, and what happens if it falls below 65%?">
+              <span class="card-title">Attendance & Debarment</span>
+              <span class="card-desc">Minimum percentage, condonation, and debarment rules</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="What documents are required for examination registration?">
+              <span class="card-title">Exam Registration</span>
+              <span class="card-desc">Eligibility, hall ticket prerequisites, and deadlines</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="Explain the grading system and minimum CGPA needed for graduation.">
+              <span class="card-title">Grading Scale & CGPA</span>
+              <span class="card-desc">10-point scale, grade points, and pass criteria</span>
+            </button>
+            <button class="suggestion-card prompt-chip" data-query="What is the procedure to obtain a Transfer Certificate (TC)?">
+              <span class="card-title">Transfer Certificate (TC)</span>
+              <span class="card-desc">Clearance forms, timeline, and document return</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Message Stream -->
+        <div id="messages-stream" class="messages-stream"></div>
+
+        <!-- Minimal Loading State -->
+        <div id="typing-indicator" class="typing-indicator hidden" aria-live="polite">
+          <div class="typing-bubble">
+            <div class="typing-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="typing-label">Searching verified regulations...</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Floating Minimalist Input Area -->
+    <div class="input-area-wrapper">
+      <div class="input-container">
+        <form id="chat-form" class="input-box">
+          <textarea
+            id="user-input"
+            rows="1"
+            placeholder="Ask about college regulations, certificates, attendance, or exams..."
+            aria-label="Student Query"
+            required
+          ></textarea>
+          
+          <button type="submit" id="send-btn" class="send-btn" title="Send (Enter)" aria-label="Send">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <div class="input-footnote">
+          <span>Official University Helpdesk • 100% Local AI • Answers verified from campus documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

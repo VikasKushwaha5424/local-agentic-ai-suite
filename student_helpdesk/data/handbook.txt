@@ -1,0 +1,97 @@
+================================================================================
+                    STUDENT HANDBOOK — ACADEMIC POLICIES
+                    University Academic Year 2024-2025
+================================================================================
+
+ATTENDANCE POLICY
+-----------------
+1. All students must maintain a minimum attendance of 75% in each course
+   throughout the semester. Attendance is tracked per lecture, lab, and tutorial.
+
+2. Students with attendance between 65%-74% will receive a formal warning
+   letter from the Dean of Student Affairs.
+
+3. Students with attendance below 65% will be debarred from the end-semester
+   examination for that course.
+
+4. Medical attendance condonation of up to 10% may be granted on submission
+   of valid medical certificates to the Dean's office within 7 working days
+   of resuming classes.
+
+GRADING POLICY
+--------------
+The University follows an absolute grading system:
+
+  Grade  | Marks Range | Grade Points
+  -------|-------------|-------------
+  O      | 90-100      | 10
+  A+     | 80-89       | 9
+  A      | 70-79       | 8
+  B+     | 60-69       | 7
+  B      | 50-59       | 6
+  C      | 40-49       | 5
+  F      | Below 40    | 0
+
+Passing Criteria:
+- Theory courses: Minimum grade of "C" (40 marks out of 100) to pass.
+- Lab courses: Minimum grade of "C" and completion of all mandatory experiments.
+- Projects/thesis: Minimum grade of "B" with submitted report and viva voce.
+
+CGPA Calculation:
+  CGPA = Sum of (Grade Points x Credits) / Total Credits
+  A minimum CGPA of 5.0 is required for degree conferment.
+
+COURSE REGISTRATION
+-------------------
+- Registration opens 2 weeks before the semester starts.
+- Last date for regular registration: End of the first week of the semester.
+- Late registration with Rs. 500 late fee is allowed up to 2 weeks after
+  the semester begins. No registration accepted after that.
+
+Registration Deadlines for 2024-2025:
+  Odd Semester:  Opens July 15, 2024. Last date: August 2, 2024.
+  Even Semester: Opens January 5, 2025. Last date: January 20, 2025.
+
+Maximum Credit Load:
+  - Regular students: 24 credits per semester.
+  - Students with CGPA above 8.0: 27 credits.
+  - Students on academic probation (CGPA below 5.0): 18 credits.
+
+EXAMINATION REGISTRATION
+-------------------------
+All students must register for end-semester exams separately from course
+registration. Exam registration opens 4 weeks before the examination period.
+
+Documents Required for Examination Registration:
+  1. Valid University ID Card (original, not expired)
+  2. Fee payment receipt for the current semester
+  3. Attendance compliance certificate from the department (min 75%)
+  4. No Dues Certificate from the Library (no overdue books)
+  5. Lab completion certificate (for lab courses, signed by lab instructor)
+  6. Course registration confirmation printout from the student portal
+  7. Internal assessment marks acknowledgment (verify on portal)
+
+Exam Registration Fees:
+  Regular registration (within deadline): Rs. 1,000 per semester
+  Late registration (up to 1 week after deadline): Rs. 1,500
+  Supplementary/Re-examination: Rs. 500 per course
+
+HALL TICKET
+-----------
+Hall tickets are generated electronically and available for download on the
+student portal, typically 1 week before exams.
+
+How to Download:
+  1. Log in to the Student Portal.
+  2. Navigate to "Examinations" > "Hall Ticket".
+  3. Verify all details, download, and print on A4 paper.
+  4. Get it attested by the Head of Department (stamp + signature).
+
+Students MUST carry the printed, attested hall ticket and university ID
+to every exam. Entry without a valid hall ticket is not permitted.
+
+Duplicate Hall Ticket:
+  1. Report the loss to the Examination Section.
+  2. Submit application to the Controller of Examinations.
+  3. Pay Rs. 200 as duplicate hall ticket fee.
+  4. Issued within 2 working days, marked as "DUPLICATE".
